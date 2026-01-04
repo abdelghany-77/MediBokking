@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Authentication files (VERY IMPORTANT!)
+auth.json
+
+# Screenshots
+*. png
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

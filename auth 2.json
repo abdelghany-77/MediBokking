@@ -1,0 +1,174 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.2.1096760470.1766501387",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1801158000.806532,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bkng_sso_session",
+      "value": "eyJib29raW5nX2dsb2JhbCI6W3sibG9naW5faGludCI6IjZFTk9LeVlEOE9NendvTGJ1Z0tTaXlVclhXL0pBM2JsVmJDc09OVVlIWHcifV19",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1801158015.073839,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "cgumid",
+      "value": "5MpC3l9rZHBibUwlMkJ6bTcwa1dkek0lMkJvVzJWbzFCQmU5N1FSWm9LRjFTNDNkNW5vdFBvWWdhSFgzeThJTmJQJTJGUGs0VyUyQlYlMkJickRtQmNxV21hNU03M2l5VlglMkJzZyUzRCUzRA",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1767202816.638628,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "g_state",
+      "value": "{\"i_l\":0,\"i_ll\":1766598001534}",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1782150009,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.1101881221.1766597069",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1766684400,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.1798846652.1766501364",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1774277364,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "aws-waf-token",
+      "value": "9ef2fd11-75f5-4037-b097-1fde8957aacd:IAoAinJ7m0ygAAAA:kYjAXLcitnfdXtK28DgIebBxgAwn3D4nmscCNJ3+jFmc//OTRE3h5oy4QprAHvmU38m8oLGByZpTHLrzOTQbyw8jePuHBObpvGVc26a9Ryt1RMdP+BHMMJ2+ouX2BhpZgZIQdhumZRMwyWZNcE3GomZcIPmbH9GAC9/PtmPl2Ov1lvrQ2/uJA+Pi0l2PPM/jZgA7FKUR7Y2Cb/L66ZnHRKKvVT4ymxKv0GYFrN+vbfhu+xHBD8R2A8aZSoRYwoCHcmLm04Jb3w==",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1766943631,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bkng",
+      "value": "11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbmlZgMctCRAYcSPrGsM8SrTEQt6ETq7sEzrDw0OE4%2BtcYMEJ7nNGSoV1FaNWAMEwNtiq304AXGDz8T0J5odhHO5c%2FmFE9nEIFK8sXnhP5LZk6b7n09X75yswgBGql47QGSqz7eSKp3rv3teDRyf6N74MzKRiWUC8%2Bc5o5B44MvlFPVQr0LGl68b9BPRnmqJ5Nc73QH8Fzt5oGzjTDHKUTBg%3D%3D",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1801158024.942225,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "bkng_sso_auth",
+      "value": "CAIQm8CWywYawgGCAP0xwDpEvvHi/D3fC5PVWP5gu4yWUSVCmyQxAcbm1zvpBZykndaaY9UChdMYLdobbnfCZwdZT7gyjLjfNseoCwbB/TLPjta9C8X12YYhIIfyEEixKiXlggpcAjnyOiAm3zI7WK2BJw4qSG4fkDSeQ4aWMk06G3G9WlGuoPA/fZ29xhfvq+pA4E0Rj6vHE+dbdDBMcCGSFneHgxjvgr214aS0zgiStUtb77bjMhKMejgf5Z81++zrFQ3DfJE048DG2g==",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1801158009.818246,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "cto_bundle",
+      "value": "UAbJPl91RCUyQk1yNXhaQWNGcEo1UXpyQ0F2WGhjbm5HU2NUMWZSaVlCaUc2SHFTZTNPa1g1ZjJsYVg2cmFvRlpvVmxHaG92TExLdyUyQkJhUE9MQXN6OEdJejVnM2NRNHpSQkR1STVXWWZpRzZxJTJGdmslMkZuS0ZBJTJGOUVyT2VrQiUyRmZBc1dnc1FrOQ",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1800762018,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_yjsu_yjad",
+      "value": "1766501364.01fe5802-2527-4832-b91a-68a49394602d",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1798037364,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bkng_prue",
+      "value": "1",
+      "domain": ".booking.com",
+      "path": "/",
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bkng_sso_auth_1766598009",
+      "value": "CAIQm8CWywYawgGCAP0xwDpEvvHi/D3fC5PVWP5gu4yWUSVCmyQxAcbm1zvpBZykndaaY9UChdMYLdobbnfCZwdZT7gyjLjfNseoCwbB/TLPjta9C8X12YYhIIfyEEixKiXlggpcAjnyOiAm3zI7WK2BJw4qSG4fkDSeQ4aWMk06G3G9WlGuoPA/fZ29xhfvq+pA4E0Rj6vHE+dbdDBMcCGSFneHgxjvgr214aS0zgiStUtb77bjMhKMejgf5Z81++zrFQ3DfJE048DG2g==",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1801158009.818343,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bkng_sso_ses",
+      "value": "eyJib29raW5nX2dsb2JhbCI6W3siaCI6IjZFTk9LeVlEOE9NendvTGJ1Z0tTaXlVclhXL0pBM2JsVmJDc09OVVlIWHcifV19",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1801158015.073547,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Wed+Dec+24+2025+19%3A40%3A15+GMT%2B0200+(Eastern+European+Standard+Time)&version=202501.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=ac7b265f-96b5-4911-bd89-11c8ab63e7fb&interactionCount=1&isAnonUser=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0004%3A0&implicitConsentCountry=nonGDPR&implicitConsentDate=1766501363866&AwaitingReconsent=false",
+      "domain": "www.booking.com",
+      "path": "/",
+      "expires": 1782150015,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "pcm_consent",
+      "value": "consentedAt%3D2025-12-24T17%3A40%3A09.789Z%26countryCode%3DEG%26expiresAt%3D2026-06-22T17%3A40%3A09.789Z%26implicit%3Dfalse%26regionCode%3DC%26regulation%3Dnone%26legacyRegulation%3Dnone%26consentId%3D8e3b7c43-41af-4414-8732-5105c1856846%26analytical%3Dfalse%26marketing%3Dfalse",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1798134009.818142,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "pcm_pac",
+      "value": "%5B%22761b6aefa9926cadd1b1ea9432d5b340c5e93aac6d9a774b4bf9f8704eee86f1%22%2C6%5D",
+      "domain": ".booking.com",
+      "path": "/",
+      "expires": 1766599815.073942,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

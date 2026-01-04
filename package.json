@@ -1,0 +1,38 @@
+{
+  "name": "travel-automation",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "server": "node src/server.js",
+    "login": "node src/automation/login.js",
+    "check-session": "node src/automation/check_session.js",
+    "book": "node src/automation/booking_engine.js"
+  },
+  "keywords": [
+    "travel",
+    "automation",
+    "booking",
+    "playwright"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Travel Agency Automation System - Hotel & Flight Bookings",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.22.1",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.0.3",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.10.1",
+    "pdfkit": "^0.14.0",
+    "playwright": "^1.57.0",
+    "playwright-extra": "^4.3.6",
+    "puppeteer": "^24.33.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

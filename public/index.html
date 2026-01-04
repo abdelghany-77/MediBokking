@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediBooking - Premium Travel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #0ea5e9;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --bg-surface: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      min-height: 100vh;
+      padding: 40px 0;
+      color: var(--text-dark);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
+      z-index: -1;
+      animation: gradientShift 15s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    /* Floating particles effect */
+    body::after {
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 160px 120px, rgba(255, 255, 255, 0.3), transparent);
+      background-size: 200px 200px;
+      animation: particleFloat 20s linear infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-200px);
+      }
+    }
+
+    .booking-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.4),
+        0 0 0 1px var(--glass-border),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Header Styling with animated gradient */
+    .card-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--primary-dark) 100%);
+      background-size: 200% 200%;
+      animation: headerGradient 8s ease infinite;
+      color: white;
+      padding: 50px 40px;
+      text-align: center;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes headerGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Decorative elements in Header */
+    .card-header::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -50px;
+      width: 250px;
+      height: 250px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -30px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .card-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-header h1 i {
+      animation: planeFly 3s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes planeFly {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-5px) rotate(5deg);
+      }
+    }
+
+    .card-header p {
+      margin: 15px 0 0;
+      opacity: 0.9;
+      font-size: 16px;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-body {
+      padding: 45px;
+    }
+
+    /* Section Titles - Modern Premium Style */
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: transparent;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-weight: 800;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    /* Animated gradient underline */
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .section-title:hover::after {
+      width: 120px;
+    }
+
+    /* Glowing icon badge */
+    .section-title i {
+      font-size: 18px;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow:
+        0 4px 15px rgba(99, 102, 241, 0.35),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+      -webkit-text-fill-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .section-title:hover i {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow:
+        0 6px 20px rgba(99, 102, 241, 0.5),
+        0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Service Type Toggle with glow effect */
+    .service-toggle-container {
+      background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
+      padding: 6px;
+      border-radius: 16px;
+      display: flex;
+      position: relative;
+      margin-bottom: 35px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-check+.btn-outline-primary {
+      border: none;
+      width: 50%;
+      border-radius: 12px;
+      font-weight: 600;
+      color: var(--text-light);
+      padding: 14px;
+      z-index: 1;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-check:checked+.btn-outline-primary {
+      background: white;
+      color: var(--primary);
+      box-shadow:
+        0 4px 15px rgba(99, 102, 241, 0.2),
+        0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-check+.btn-outline-primary:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+      transform: translateY(-1px);
+    }
+
+    /* Form Inputs with glow effects */
+    .form-label {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .input-group {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: white;
+    }
+
+    .input-group:focus-within {
+      box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.15),
+        0 4px 12px rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .input-group-text {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border: 1px solid #e2e8f0;
+      border-right: none;
+      color: var(--primary);
+      border-radius: 12px 0 0 12px;
+      padding: 0 16px;
+      font-size: 18px;
+    }
+
+    .form-control,
+    .form-select {
+      border: 1px solid #e2e8f0;
+      border-left: none;
+      border-radius: 0 12px 12px 0;
+      padding: 14px;
+      font-size: 15px;
+      color: var(--text-dark);
+      background: white;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #e2e8f0;
+      box-shadow: none;
+      background-color: #fafbfc;
+    }
+
+    /* Submit Button with animated gradient */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border: none;
+      border-radius: 14px;
+      padding: 18px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow:
+        0 10px 30px rgba(99, 102, 241, 0.3),
+        0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 20px 40px rgba(99, 102, 241, 0.4),
+        0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px);
+    }
+
+    /* Passenger Card Styling with gradient border */
+    .passenger-item {
+      background: linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+      border: 2px solid transparent !important;
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .passenger-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .passenger-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
+    }
+
+    .passenger-item:hover::before {
+      opacity: 1;
+    }
+
+    /* Add Passenger Button */
+    .btn-outline-success {
+      border: 2px dashed var(--success);
+      border-radius: 14px;
+      font-weight: 600;
+      color: var(--success);
+      transition: all 0.3s ease;
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .btn-outline-success:hover {
+      background: var(--success);
+      color: white;
+      border-style: solid;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+    }
+
+    /* Success Message Animation */
+    .success-icon {
+      font-size: 90px;
+      background: linear-gradient(135deg, var(--success), #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      margin-bottom: 20px;
+      animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0) rotate(-10deg);
+      }
+
+      70% {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    /* Budget Range Inputs */
+    .budget-wrapper .input-group-text:last-child {
+      border-radius: 0 12px 12px 0;
+      border-left: none;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    .budget-wrapper .form-control {
+      border-radius: 0;
+    }
+
+    /* Footer */
+    footer p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+      margin-top: 35px;
+      font-weight: 500;
+    }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      display: none;
+    }
+
+    /* Transition for form switching */
+    #hotelFields,
+    #flightFields {
+      animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+
+        <div class="booking-card">
+          <div class="card-header">
+            <h1><i class="bi bi-send-fill me-2"></i>MediBooking</h1>
+            <p>Experience the world with premium automation</p>
+          </div>
+
+          <div class="card-body">
+            <form id="bookingForm">
+
+              <h6 class="section-title"><i class="bi bi-sliders"></i> Choose Services</h6>
+              <div class="service-toggle-container" role="group">
+                <input type="radio" class="btn-check" name="serviceType" id="serviceHotel" value="Hotel" checked
+                  autocomplete="off">
+                <label class="btn btn-outline-primary" for="serviceHotel">
+                  <i class="bi bi-building me-2"></i> Hotel Stays
+                </label>
+
+                <input type="radio" class="btn-check" name="serviceType" id="serviceFlight" value="Flight"
+                  autocomplete="off">
+                <label class="btn btn-outline-primary" for="serviceFlight">
+                  <i class="bi bi-airplane-engines me-2"></i> Flights
+                </label>
+              </div>
+
+              <h6 class="section-title"><i class="bi bi-person-badge"></i> Main Passenger</h6>
+
+              <div class="row mb-4">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="clientName" class="form-label">Full Name</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" id="clientName" name="clientName"
+                      placeholder="e.g. John Doe" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com"
+                      required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="+1 234 567 8900">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="country" class="form-label">Country/Region</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-flag"></i></span>
+                    <select class="form-select" id="country" name="country" required>
+                      <option value="" disabled selected>Select your country</option>
+                      <option value="Tunisia">Tunisia</option>
+                      <option value="France">France</option>
+                      <option value="Turkey">Turkey</option>
+                      <option value="Italy">Italy</option>
+                      <option value="Spain">Spain</option>
+                      <option value="United States">United States</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="Germany">Germany</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="passportNumber" class="form-label">Passport Number</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-card-heading"></i></span>
+                    <input type="text" class="form-control" id="passportNumber" name="passportNumber"
+                      placeholder="AB1234567">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="passengerDOB" class="form-label">Date of Birth</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-cake2"></i></span>
+                    <input type="date" class="form-control" id="passengerDOB" name="passengerDOB" required>
+                  </div>
+                </div>
+              </div>
+
+              <h6 class="section-title"><i class="bi bi-map"></i> Itinerary Details</h6>
+
+              <div id="hotelFields">
+                <div class="row mb-4">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="destination" class="form-label">Destination City</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                      <select class="form-select" id="destination" name="destination">
+                        <option value="" disabled selected>Where are you going?</option>
+                        <option value="Paris">Paris, France</option>
+                        <option value="Istanbul">Istanbul, Turkey</option>
+                        <option value="London">London, UK</option>
+                        <option value="Dubai">Dubai, UAE</option>
+                        <option value="Rome">Rome, Italy</option>
+                        <option value="Barcelona">Barcelona, Spain</option>
+                        <option value="Amsterdam">Amsterdam, Netherlands</option>
+                        <option value="Tokyo">Tokyo, Japan</option>
+                        <option value="New York">New York, USA</option>
+                        <option value="Tunis">Tunis, Tunisia</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="adultsCount" class="form-label">Guests</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-people"></i></span>
+                      <input type="number" class="form-control" id="adultsCount" name="adultsCount" min="1" max="10"
+                        value="1">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="checkInDate" class="form-label">Check-in</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-calendar-check"></i></span>
+                      <input type="date" class="form-control" id="checkInDate" name="checkInDate">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="checkOutDate" class="form-label">Check-out</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-calendar-x"></i></span>
+                      <input type="date" class="form-control" id="checkOutDate" name="checkOutDate">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 mb-4 border">
+                  <h6 class="text-primary mb-3" style="font-size: 14px; font-weight: 700;">
+                    <i class="bi bi-wallet2 me-2"></i>Price Range (Per Night)
+                  </h6>
+                  <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                      <label for="minPrice" class="form-label text-muted" style="font-size: 12px;">Min Price</label>
+                      <div class="input-group budget-wrapper">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="minPrice" name="minPrice" min="0" step="10"
+                          placeholder="50">
+                        <span class="input-group-text">/night</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="maxPrice" class="form-label text-muted" style="font-size: 12px;">Max Price</label>
+                      <div class="input-group budget-wrapper">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="0" step="10"
+                          placeholder="200">
+                        <span class="input-group-text">/night</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="flightFields" style="display: none;">
+                <div class="row mb-4">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="departureAirport" class="form-label">Departure (From)</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-airplane-fill"
+                          style="transform: rotate(-45deg);"></i></span>
+                      <select class="form-select" id="departureAirport" name="departureAirport" required>
+                        <option value="" disabled selected>Select departure airport</option>
+                        <optgroup label="Tunisia">
+                          <option value="TUN">TUN - Tunis Carthage</option>
+                          <option value="MIR">MIR - Monastir</option>
+                          <option value="DJE">DJE - Djerba</option>
+                          <option value="SFA">SFA - Sfax</option>
+                        </optgroup>
+                        <optgroup label="France">
+                          <option value="CDG">CDG - Paris Charles de Gaulle</option>
+                          <option value="ORY">ORY - Paris Orly</option>
+                          <option value="MRS">MRS - Marseille</option>
+                          <option value="LYS">LYS - Lyon</option>
+                          <option value="NCE">NCE - Nice</option>
+                          <option value="TLS">TLS - Toulouse</option>
+                          <option value="BOD">BOD - Bordeaux</option>
+                        </optgroup>
+                        <optgroup label="Turkey">
+                          <option value="IST">IST - Istanbul Airport</option>
+                          <option value="SAW">SAW - Istanbul Sabiha Gökçen</option>
+                          <option value="AYT">AYT - Antalya</option>
+                        </optgroup>
+                        <optgroup label="Italy">
+                          <option value="FCO">FCO - Rome Fiumicino</option>
+                          <option value="MXP">MXP - Milan Malpensa</option>
+                        </optgroup>
+                        <optgroup label="Other Europe">
+                          <option value="LHR">LHR - London Heathrow</option>
+                          <option value="BCN">BCN - Barcelona</option>
+                          <option value="FRA">FRA - Frankfurt</option>
+                          <option value="AMS">AMS - Amsterdam</option>
+                          <option value="BRU">BRU - Brussels</option>
+                          <option value="GVA">GVA - Geneva</option>
+                          <option value="ZRH">ZRH - Zurich</option>
+                        </optgroup>
+                        <optgroup label="Middle East & Africa">
+                          <option value="DXB">DXB - Dubai</option>
+                          <option value="CAI">CAI - Cairo</option>
+                          <option value="ALG">ALG - Algiers</option>
+                          <option value="CMN">CMN - Casablanca</option>
+                          <option value="JED">JED - Jeddah</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="arrivalAirport" class="form-label">Arrival (To)</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-airplane-fill"
+                          style="transform: rotate(45deg);"></i></span>
+                      <select class="form-select" id="arrivalAirport" name="arrivalAirport" required>
+                        <option value="" disabled selected>Select arrival airport</option>
+                        <optgroup label="Tunisia">
+                          <option value="TUN">TUN - Tunis Carthage</option>
+                          <option value="MIR">MIR - Monastir</option>
+                          <option value="DJE">DJE - Djerba</option>
+                          <option value="SFA">SFA - Sfax</option>
+                        </optgroup>
+                        <optgroup label="France">
+                          <option value="CDG">CDG - Paris Charles de Gaulle</option>
+                          <option value="ORY">ORY - Paris Orly</option>
+                          <option value="MRS">MRS - Marseille</option>
+                          <option value="LYS">LYS - Lyon</option>
+                          <option value="NCE">NCE - Nice</option>
+                          <option value="TLS">TLS - Toulouse</option>
+                          <option value="BOD">BOD - Bordeaux</option>
+                        </optgroup>
+                        <optgroup label="Turkey">
+                          <option value="IST">IST - Istanbul Airport</option>
+                          <option value="SAW">SAW - Istanbul Sabiha Gökçen</option>
+                          <option value="AYT">AYT - Antalya</option>
+                        </optgroup>
+                        <optgroup label="Italy">
+                          <option value="FCO">FCO - Rome Fiumicino</option>
+                          <option value="MXP">MXP - Milan Malpensa</option>
+                        </optgroup>
+                        <optgroup label="Other Europe">
+                          <option value="LHR">LHR - London Heathrow</option>
+                          <option value="BCN">BCN - Barcelona</option>
+                          <option value="FRA">FRA - Frankfurt</option>
+                          <option value="AMS">AMS - Amsterdam</option>
+                          <option value="BRU">BRU - Brussels</option>
+                          <option value="GVA">GVA - Geneva</option>
+                          <option value="ZRH">ZRH - Zurich</option>
+                        </optgroup>
+                        <optgroup label="Middle East & Africa">
+                          <option value="DXB">DXB - Dubai</option>
+                          <option value="CAI">CAI - Cairo</option>
+                          <option value="ALG">ALG - Algiers</option>
+                          <option value="CMN">CMN - Casablanca</option>
+                          <option value="JED">JED - Jeddah</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="flightDate" class="form-label">Departure Date</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                      <input type="date" class="form-control" id="flightDate" name="flightDate">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="returnDate" class="form-label">Return Date</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-arrow-return-left"></i></span>
+                      <input type="date" class="form-control" id="returnDate" name="returnDate">
+                    </div>
+                  </div>
+                </div>
+
+                <h6 class="section-title mt-5"><i class="bi bi-people-fill"></i> Additional Passengers</h6>
+                <div id="passengersList">
+                  <div class="alert alert-light border border-primary text-primary d-flex align-items-center">
+                    <i class="bi bi-info-circle-fill me-2" style="font-size: 1.2rem;"></i>
+                    <small><strong>Passenger 1</strong> is the main contact listed above.</small>
+                  </div>
+                </div>
+
+                <div id="additionalPassengers"></div>
+
+                <button type="button" class="btn btn-outline-success w-100 py-3 mb-4 border-2" id="addPassengerBtn"
+                  style="border-style: dashed;">
+                  <i class="bi bi-person-plus-fill me-2"></i>Add Another Passenger
+                </button>
+              </div>
+
+              <div class="d-grid mt-5">
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                  <span class="btn-text">Confirm Booking <i class="bi bi-arrow-right ms-2"></i></span>
+                  <span class="loading-spinner">
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                    Processing Request...
+                  </span>
+                </button>
+              </div>
+
+            </form>
+
+            <div class="success-message text-center" id="successMessage" style="display: none; padding: 40px 20px;">
+              <i class="bi bi-check-circle-fill success-icon"></i>
+              <h3 class="mt-4" style="font-family: 'Montserrat', sans-serif; font-weight: 700; color: #10b981;">Booking
+                Confirmed!</h3>
+              <p class="text-muted mb-4">Your itinerary is being processed. Please wait a moment.</p>
+
+              <div class="p-3 bg-light rounded border mb-4">
+                <p class="fw-bold mb-1 text-primary">Booking Reference</p>
+                <span id="bookingIdDisplay" class="fs-4 fw-bold text-dark">#</span>
+              </div>
+
+              <div id="statusDisplay" class="mt-3">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 small text-muted">Connecting to reservation systems...</p>
+              </div>
+
+              <button class="btn btn-outline-primary mt-4" onclick="resetForm()">
+                Make Another Booking
+              </button>
+            </div>
+
+            <div class="alert alert-warning shadow-sm" id="errorMessage"
+              style="display: none; border-left: 5px solid #ffc107;">
+              <div class="d-flex">
+                <i class="bi bi-exclamation-triangle-fill me-3 fs-4"></i>
+                <div>
+                  <h5 class="alert-heading fw-bold">No Matches Found</h5>
+                  <p class="mb-0" id="errorDetails">We couldn't find options in your budget.</p>
+                </div>
+              </div>
+              <hr>
+              <button class="btn btn-warning btn-sm fw-bold" onclick="resetForm()">
+                Please, Try Again
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <footer>
+          <p style="text-align: center;">&copy; 2025 MediBooking Systems. Secure Automation.</p>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    let passengerCount = 1; // Passenger 1 is main contact
+
+    // Service type toggle
+    document.addEventListener('DOMContentLoaded', function () {
+      const serviceHotel = document.getElementById('serviceHotel');
+      const serviceFlight = document.getElementById('serviceFlight');
+      const hotelFields = document.getElementById('hotelFields');
+      const flightFields = document.getElementById('flightFields');
+
+      serviceHotel.addEventListener('change', function () {
+        if (this.checked) {
+          hotelFields.style.display = 'block';
+          flightFields.style.display = 'none';
+        }
+      });
+
+      serviceFlight.addEventListener('change', function () {
+        if (this.checked) {
+          hotelFields.style.display = 'none';
+          flightFields.style.display = 'block';
+        }
+      });
+
+      // Set minimum dates for check-in/check-out/flight
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('checkInDate').setAttribute('min', today);
+      document.getElementById('checkOutDate').setAttribute('min', today);
+      document.getElementById('flightDate').setAttribute('min', today);
+      document.getElementById('returnDate').setAttribute('min', today);
+
+      // Update return date min when flight date changes
+      document.getElementById('flightDate').addEventListener('change', function () {
+        const flightDate = new Date(this.value);
+        flightDate.setDate(flightDate.getDate() + 1);
+        document.getElementById('returnDate').setAttribute('min', flightDate.toISOString().split('T')[0]);
+      });
+
+      // Set max date for DOB (must be at least 18 years old)
+      const maxDOB = new Date();
+      maxDOB.setFullYear(maxDOB.getFullYear() - 18);
+      document.getElementById('passengerDOB').setAttribute('max', maxDOB.toISOString().split('T')[0]);
+
+      // Update checkout min date when checkin changes
+      document.getElementById('checkInDate').addEventListener('change', function () {
+        const checkInDate = new Date(this.value);
+        checkInDate.setDate(checkInDate.getDate() + 1);
+        document.getElementById('checkOutDate').setAttribute('min', checkInDate.toISOString().split('T')[0]);
+      });
+
+      // Validate budget range
+      document.getElementById('minPrice').addEventListener('change', function () {
+        const minPrice = parseFloat(this.value);
+        const maxPriceInput = document.getElementById('maxPrice');
+        if (maxPriceInput.value && parseFloat(maxPriceInput.value) < minPrice) {
+          maxPriceInput.value = minPrice;
+        }
+        maxPriceInput.setAttribute('min', minPrice);
+      });
+
+      // Add passenger button
+      document.getElementById('addPassengerBtn').addEventListener('click', function () {
+        passengerCount++;
+        const passengerHTML = `
+          <div class="passenger-item border rounded p-3 mb-3" data-passenger="${passengerCount}">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0 text-primary fw-bold"><i class="bi bi-person-fill me-2"></i>Passenger ${passengerCount}</h6>
+              <button type="button" class="btn btn-sm btn-outline-danger remove-passenger border-0">
+                <i class="bi bi-x-circle-fill"></i> Remove
+              </button>
+            </div>
+            <div class="row">
+              <div class="col-md-2 mb-2">
+                <label class="form-label small text-muted">Title</label>
+                <select class="form-select form-select-sm passenger-title" required>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Mrs.">Mrs./Miss.</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-2">
+                <label class="form-label small text-muted">Full Name</label>
+                <input type="text" class="form-control passenger-name" 
+                       placeholder="John Doe" required>
+              </div>
+              <div class="col-md-3 mb-2">
+                <label class="form-label small text-muted">Nationality</label>
+                <select class="form-select form-select-sm passenger-nationality" required>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="France">France</option>
+                  <option value="Germany">Germany</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-2">
+                <label class="form-label small text-muted">Date of Birth</label>
+                <input type="date" class="form-control passenger-dob" 
+                    max="${maxDOB.toISOString().split('T')[0]}" required>
+              </div>
+            </div>
+          </div>
+        `;
+        document.getElementById('additionalPassengers').insertAdjacentHTML('beforeend', passengerHTML);
+      });
+
+      // Remove passenger (event delegation)
+      document.getElementById('additionalPassengers').addEventListener('click', function (e) {
+        if (e.target.closest('.remove-passenger')) {
+          e.target.closest('.passenger-item').remove();
+          // Renumber remaining passengers
+          const passengers = document.querySelectorAll('.passenger-item');
+          passengers.forEach((item, index) => {
+            item.querySelector('h6').innerHTML = `<i class="bi bi-person-fill me-2"></i>Passenger ${index + 2}`;
+            item.dataset.passenger = index + 2;
+          });
+          passengerCount = passengers.length + 1;
+        }
+      });
+    });
+
+    // Handle form submission
+    document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const spinner = submitBtn.querySelector('.loading-spinner');
+
+      // Show loading state
+      btnText.style.display = 'none';
+      spinner.style.display = 'inline-block';
+      submitBtn.disabled = true;
+
+      // Collect form data
+      const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+      const formData = {
+        serviceType: serviceType,
+        clientName: document.getElementById('clientName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        passportNumber: document.getElementById('passportNumber').value,
+        passengerDOB: document.getElementById('passengerDOB').value
+      };
+
+      if (serviceType === 'Hotel') {
+        formData.destination = document.getElementById('destination').value;
+        formData.checkInDate = document.getElementById('checkInDate').value;
+        formData.checkOutDate = document.getElementById('checkOutDate').value;
+        formData.adultsCount = document.getElementById('adultsCount').value;
+        formData.minPrice = document.getElementById('minPrice').value;
+        formData.maxPrice = document.getElementById('maxPrice').value;
+      } else {
+        // Flight booking
+        formData.departureAirport = document.getElementById('departureAirport').value;
+        formData.arrivalAirport = document.getElementById('arrivalAirport').value;
+        formData.flightDate = document.getElementById('flightDate').value;
+        formData.returnDate = document.getElementById('returnDate').value;
+
+        // Collect all passengers
+        const passengersList = [];
+
+        // Passenger 1 (main contact)
+        passengersList.push({
+          clientName: formData.clientName,
+          passportNumber: formData.passportNumber,
+          passengerDOB: formData.passengerDOB,
+          nationality: document.getElementById('country').value,
+          title: 'Mr.' // Default for main passenger
+        });
+
+        // Additional passengers
+        const additionalPassengers = document.querySelectorAll('.passenger-item');
+        additionalPassengers.forEach(item => {
+          passengersList.push({
+            clientName: item.querySelector('.passenger-name').value,
+            passengerDOB: item.querySelector('.passenger-dob').value,
+            nationality: item.querySelector('.passenger-nationality').value,
+            title: item.querySelector('.passenger-title').value
+          });
+        });
+
+        formData.passengersList = passengersList;
+        formData.adults = passengersList.length; // Set adults count for passenger selection
+        formData.children = 0;
+        formData.infants = 0;
+      }
+
+      try {
+        const response = await fetch('/api/submit-booking', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Show success message
+          document.getElementById('bookingForm').style.display = 'none';
+          document.getElementById('successMessage').style.display = 'block';
+
+          // Handle single or multiple bookings
+          if (result.bookingIds && result.bookingIds.length > 1) {
+            // Multiple bookings (group flight)
+            document.getElementById('bookingIdDisplay').innerHTML =
+              `<div class="text-start ms-4">` +
+              `<strong>${result.bookingIds.length} Passengers Processed:</strong><br>` +
+              `<ul class="list-unstyled mt-2">` +
+              result.bookingIds.map((id, i) => `<li><i class="bi bi-ticket-perforated me-2"></i>Passenger ${i + 1}: <code>${id}</code></li>`).join('') +
+              `</ul></div>`;
+
+            // Poll all booking statuses
+            result.bookingIds.forEach(id => pollBookingStatus(id));
+          } else {
+            // Single booking
+            const bookingId = result.bookingId || result.bookingIds[0];
+            document.getElementById('bookingIdDisplay').textContent = bookingId;
+            pollBookingStatus(bookingId);
+          }
+        } else {
+          alert('Error: ' + result.message);
+        }
+
+      } catch (error) {
+        console.error('Submission error:', error);
+        alert('Failed to submit booking. Please try again.');
+      } finally {
+        // Reset button state
+        btnText.style.display = 'inline-block';
+        spinner.style.display = 'none';
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Poll booking status
+    let statusPollInterval = null;
+
+    // Client-side sanitizer to avoid showing raw terminal/call-log details
+    function sanitizeClientMessage(msg) {
+      if (!msg) return 'Unable to find valid options within criteria.';
+      let s = String(msg || '');
+
+      // Remove Playwright/Call log verbose sections
+      s = s.replace(/Call log:[\s\S]*/i, '');
+      s = s.replace(/\[.*?m - navigating to[\s\S]*/i, '');
+
+      // Remove URLs
+      s = s.replace(/https?:\/\/\S+/g, '');
+
+      // Remove stack trace lines starting with 'at '
+      s = s.split(/\r?\n/).filter(line => !line.trim().startsWith('at ')).join(' ');
+
+      // Collapse whitespace and truncate
+      s = s.replace(/\s+/g, ' ').trim();
+      if (s.length > 200) s = s.slice(0, 197) + '...';
+
+      return s || 'Unable to find valid options within criteria.';
+    }
+
+    function pollBookingStatus(bookingId) {
+      // Clear any existing interval
+      if (statusPollInterval) {
+        clearInterval(statusPollInterval);
+      }
+
+      // Poll every 5 seconds
+      statusPollInterval = setInterval(async () => {
+        try {
+          const response = await fetch(`/api/bookings/${bookingId}`);
+          const result = await response.json();
+
+          if (result.success && result.booking) {
+            const booking = result.booking;
+            const statusDisplay = document.getElementById('statusDisplay');
+
+            if (booking.status === 'Confirmed') {
+              // Booking successful!
+              clearInterval(statusPollInterval);
+              statusDisplay.innerHTML = `
+                <div class="alert alert-success border-0 shadow-sm mt-3 text-start">
+                  <h5 class="alert-heading fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Booking Successful!</h5>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-6"><strong>Service:</strong> ${booking.hotelName || (booking.serviceType === 'Flight' ? (booking.departureAirport + ' → ' + booking.arrivalAirport) : booking.serviceType)}</div>
+                    <div class="col-md-6"><strong>PNR:</strong> <code>${booking.pnr}</code></div>
+                    <div class="col-md-6"><strong>Price:</strong> $${booking.price}</div>
+                    <div class="col-md-6"><strong>Destination:</strong> ${booking.destination || booking.arrivalAirport}</div>
+                  </div>
+                  <p class="mb-0 mt-3 small"><i class="bi bi-envelope me-1"></i> Confirmation sent to ${booking.email}</p>
+                </div>
+              `;
+            } else if (booking.status === 'Failed') {
+              // Booking failed - show error message
+              clearInterval(statusPollInterval);
+              document.getElementById('successMessage').style.display = 'none';
+              document.getElementById('errorMessage').style.display = 'block';
+              // Sanitize server-provided message before rendering
+              document.getElementById('errorDetails').textContent = sanitizeClientMessage(booking.errorMessage);
+            } else if (booking.status === 'Processing') {
+              // Still processing
+              statusDisplay.innerHTML = `
+                <div class="d-flex align-items-center justify-content-center mt-4">
+                    <div class="spinner-border text-primary spinner-border-sm me-2" role="status"></div>
+                    <span class="text-primary fw-bold">Your Booking is being processed...</span>
+                </div>
+              `;
+            }
+          }
+        } catch (error) {
+          console.error('Error polling status:', error);
+        }
+      }, 5000); // Poll every 5 seconds
+    }
+
+    // Reset form function
+    function resetForm() {
+      // Clear polling interval
+      if (statusPollInterval) {
+        clearInterval(statusPollInterval);
+        statusPollInterval = null;
+      }
+
+      document.getElementById('bookingForm').reset();
+      document.getElementById('bookingForm').style.display = 'block';
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('errorMessage').style.display = 'none';
+
+      // Reset view to Hotel default
+      document.getElementById('hotelFields').style.display = 'block';
+      document.getElementById('flightFields').style.display = 'none';
+
+      // Clear additional passengers
+      document.getElementById('additionalPassengers').innerHTML = '';
+      passengerCount = 1;
+    }
+  </script>
+</body>
+
+</html>
