@@ -206,12 +206,3 @@ The modern, premium booking interface with animated gradients and glassmorphism 
 Complete booking management system with status tracking and quick actions.
 
 ---
-
-## 🔐 Security Notes
-
-- **Session Management**: Browser sessions are stored locally in `auth*.json` files
-- **Credentials**: Never commit your `.env` file or session files to version control
-- **Admin Access**: The admin panel is protected with session-based authentication
-- **HTTPS**: In production, always use HTTPS for secure data transmission
-
----
